@@ -1,4 +1,23 @@
-inventory_name - наименование описи;
-species- вид фонда;
-types - наименование фонда
-area - район области;
+inventories - наименование описи
+	inv_id NOT NULL PIMARY KEY,
+	inv_name VARCHAR(300),
+	inv_address VARCHAR(300),
+	inv_description(400)
+	fond_id INT;
+species- тип фонда/(Уездные комитеты РКП(б), ВКП(б)/Волостные комитеты РКП(б), ВКП(б))
+	spec_id NOT NULL PRIMARY KEY,
+	spec_name VARCHAR(300),
+	spec_address VARCHAR(300),
+	spec_description VARCHAR(400)
+	typ_id INT;
+types - вид фонда/Раздел (Партийные комитеты/Комсомольские комитеты)
+	typ_id NOT NULL PRIMARY KEY,
+	typ_name VARCHAR(300),
+	typ_address VARCHAR(300),
+	typ_description(400);
+founds - наименование фонда/(Аткарский уком ВКП(б)/Комитет ВЛКСМ)
+	fond_id NOT NULL PRIMARY KEY,
+	fond_name VARCHAR(300),
+	fond_addtess VARCHAR(300),
+	fond_description VARCHAR(400)
+	spec_id INT.

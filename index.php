@@ -18,9 +18,12 @@ if($connection->connect_error){
         $query = $_GET['query'];
         $sql = "SELECT * FROM `area` WHERE name_area LIKE '%$query%'";
 
-        $result = $connection->query($sql);
+select type_name, type_address, type_description, spec_name,
+spec_address, spec_description, fond_name, fond_address, fond_description, inv_name, inv_address, inv_description from types left join species on types.typ_id = species.typ_id left join founds on founds.spec_id = species.spec_id left join inventories on inventories.fond_id=founds.fond_id;
+      
+	  $result = $connection->query($sql);
 
-        while($row = $result->fetch_assoc()){
+         while($row = $result->fetch_assoc()){
             echo nl2br($row['name_area']);
             echo "<a href='".$row['ste_address']."'> '".$row['ste_description']."'  </a>";
             echo '<br>';

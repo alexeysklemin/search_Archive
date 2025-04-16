@@ -24,14 +24,14 @@ function searchArchives(PDO $db, string $query, int $limit = 50): array {
                 inv.inv_address AS inventory_address,
                 inv.inv_description AS inventory_description,
                 f.fond_name,
-                f.fond_addtess AS fond_address,
+                f.fond_address AS fond_address,
                 f.fond_description,
                 sp.spec_name AS species_name,
                 sp.spec_address AS species_address,
                 sp.spec_description AS species_description,
-                ty.typ_name AS type_name,
-                ty.typ_address AS type_address,
-                ty.typ_description AS type_description
+                ty.type_name AS type_name,
+                ty.type_address AS type_address,
+                ty.type_description AS type_description
             FROM inventories inv
             LEFT JOIN founds f ON inv.fond_id = f.fond_id
             LEFT JOIN species sp ON f.spec_id = sp.spec_id
@@ -43,14 +43,14 @@ function searchArchives(PDO $db, string $query, int $limit = 50): array {
                 f.fond_description LIKE :query OR
                 sp.spec_name LIKE :query OR
                 sp.spec_description LIKE :query OR
-                ty.typ_name LIKE :query OR
-                ty.typ_description LIKE :query
+                ty.type_name LIKE :query OR
+                ty.type_description LIKE :query
             ORDER BY 
                 CASE 
                     WHEN inv.inv_name LIKE :query THEN 1
                     WHEN f.fond_name LIKE :query THEN 2
                     WHEN sp.spec_name LIKE :query THEN 3
-                    WHEN ty.typ_name LIKE :query THEN 4
+                    WHEN ty.type_name LIKE :query THEN 4
                     ELSE 5
                 END
             LIMIT :limit";
@@ -75,7 +75,7 @@ if(isset($_GET['query']) && !empty(trim($_GET['query']))) {
             echo '<div class="archive-item">';
             
             // Основная информация об описи
-            echo '<h3>' . htmlspecialchars($item['inventory_name']) . '</h3>';
+            echo '<h3><a href=""' .htmlspecialchars($item['inventory_address']) .'">'. htmlspecialchars($item['inventory_name']) . '</h3>';
             if(!empty($item['inventory_description'])) {
                 echo '<div class="description">' . nl2br(htmlspecialchars($item['inventory_description'])) . '</div>';
             }

@@ -12,9 +12,9 @@ species- тип фонда/(Уездные комитеты РКП(б), ВКП(�
 	typ_id INT;
 types - вид фонда/Раздел (Партийные комитеты/Комсомольские комитеты)
 	typ_id NOT NULL PRIMARY KEY,
-	typ_name VARCHAR(300),
-	typ_address VARCHAR(300),
-	typ_description(400);
+	type_name VARCHAR(300),
+	type_address VARCHAR(300),
+	type_description(400);
 founds - наименование фонда/(Аткарский уком ВКП(б)/Комитет ВЛКСМ)
 	fond_id NOT NULL PRIMARY KEY,
 	fond_name VARCHAR(300),
